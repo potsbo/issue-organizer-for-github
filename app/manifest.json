@@ -26,7 +26,10 @@
         "https://*/*"
       ],
       "js": [
-        "scripts/contentscript.js"
+        "bower_components/angular/angular.js",
+        "scripts/contentscript.js",
+        "scripts/contentscripts/github.header.js",
+        "scripts/controllers/github.header.js"
       ],
       "run_at": "document_end",
       "all_frames": false
