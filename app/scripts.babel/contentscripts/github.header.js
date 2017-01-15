@@ -14,5 +14,10 @@ window.addEventListener('load', () => {
     item.setAttribute('href', `/${type}{{ query.${type} }}`)
   })
 
+  const contextButton = document.createElement('li')
+  contextButton.setAttribute('context-button', '')
+  contextButton.setAttribute('class', 'header-nav-item dropdown js-menu-container')
+  document.querySelector('#user-links').appendChild(contextButton)
+
   angular.bootstrap(html, ['GitHubIssueOrganizer'], [])
 })

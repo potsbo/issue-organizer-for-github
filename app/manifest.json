@@ -42,5 +42,8 @@
     },
     "default_title": "Issue Organizer for GitHub",
     "default_popup": "popup.html"
-  }
+  },
+  "web_accessible_resources": [
+    "templates/github.header/button.html"
+  ]
 }

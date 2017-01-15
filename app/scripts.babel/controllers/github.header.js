@@ -14,3 +14,11 @@ app.controller('GitHubHeaderController', ($scope) => {
     issues: queryFor('issue')
   }
 })
+
+app.directive('contextButton', [ '$sce', ($sce) => {
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: $sce.trustAsResourceUrl(chrome.extension.getURL('templates/github.header/button.html'))
+  }
+}])
