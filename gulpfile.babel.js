@@ -64,6 +64,7 @@ gulp.task('styles', () => {
 gulp.task('html', ['styles'], () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe($.if('*.js', $.ngAnnotate()))
     .pipe($.sourcemaps.init())
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cleanCss({compatibility: '*'})))
@@ -84,6 +85,7 @@ gulp.task('chromeManifest', () => {
       }
     }))
     .pipe($.if('*.css', $.cleanCss({compatibility: '*'})))
+    .pipe($.if('*.js', $.ngAnnotate()))
     .pipe($.if('*.js', $.sourcemaps.init()))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.js', $.sourcemaps.write('.')))
