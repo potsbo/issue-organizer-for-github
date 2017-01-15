@@ -76,7 +76,6 @@ gulp.task('html', ['styles'], () => {
 gulp.task('chromeManifest', () => {
   return gulp.src('app/manifest.json')
     .pipe($.chromeManifest({
-      buildnumber: true,
       background: {
         target: 'scripts/background.js',
         exclude: [
@@ -130,10 +129,11 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'))
 })
 
-gulp.task('package', function() {
-  var manifest = require('./dist/manifest.json')
+gulp.task('package', () => {
+  const manifest = require('./dist/manifest.json')
+  const name = manifest.name.toLowerCase().split(' ').join('-')
   return gulp.src('dist/**')
-    .pipe($.zip('Issue Organizer for GitHub-' + manifest.version + '.zip'))
+    .pipe($.zip(`${name}-${manifest.version}.zip`))
     .pipe(gulp.dest('package'))
 })
 
@@ -145,5 +145,5 @@ gulp.task('build', (cb) => {
 })
 
 gulp.task('default', ['clean'], (cb) => {
-  runSequence('build', cb)
+  runSequence('build', 'package', cb)
 })
