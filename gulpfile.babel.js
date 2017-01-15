@@ -130,10 +130,11 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'))
 })
 
-gulp.task('package', function() {
-  var manifest = require('./dist/manifest.json')
+gulp.task('package', () => {
+  const manifest = require('./dist/manifest.json')
+  const name = manifest.name.toLowerCase().split(' ').join('-')
   return gulp.src('dist/**')
-    .pipe($.zip('Issue Organizer for GitHub-' + manifest.version + '.zip'))
+    .pipe($.zip(`${name}-${manifest.version}.zip`))
     .pipe(gulp.dest('package'))
 })
 
