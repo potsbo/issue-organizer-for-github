@@ -2109,6 +2109,13 @@ gulp-ng-annotate@^2.0.0:
     through2 "^2.0.1"
     vinyl-sourcemaps-apply "^0.2.1"
 
+gulp-octicons@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-octicons/-/gulp-octicons-0.1.0.tgz#c9404c98ac2bb42ea959bf6eae18f232374f70ba"
+  dependencies:
+    octicons "^5.0.1"
+    through2 "^2.0.3"
+
 gulp-plumber@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/gulp-plumber/-/gulp-plumber-1.1.0.tgz#f12176c2d0422f60306c242fff6a01a394faba09"
@@ -3410,6 +3417,10 @@ object.pick@^1.1.1:
   resolved "https://registry.yarnpkg.com/object.pick/-/object.pick-1.2.0.tgz#b5392bee9782da6d9fb7d6afaf539779f1234c2b"
   dependencies:
     isobject "^2.1.0"
+
+octicons@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/octicons/-/octicons-5.0.1.tgz#0fa0c4fd3680d251266f073736539317cb846e4f"
 
 on-finished@~2.3.0:
   version "2.3.0"
