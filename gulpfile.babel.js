@@ -44,7 +44,7 @@ gulp.task('images', () => {
       // as hooks for embedding and styling
       svgoPlugins: [{cleanupIDs: false}]
     }))
-      .on('error', function(err) {
+      .on('error', function (err) {
         console.log(err)
         this.end()
       })))
@@ -61,8 +61,8 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('app/styles'))
 })
 
-gulp.task('html', ['styles'], () => {
-  return gulp.src('app/*.html')
+gulp.task('html', ['styles', 'wiredep', 'octicons'], () => {
+  return gulp.src('app/**/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.ngAnnotate()))
     .pipe($.sourcemaps.init())
@@ -115,10 +115,17 @@ gulp.task('watch', ['lint', 'babel'], () => {
   gulp.watch('app/scripts.babel/**/*.js', ['lint', 'babel'])
   gulp.watch('app/styles.scss/**/*.scss', ['styles'])
   gulp.watch('bower.json', ['wiredep'])
+  gulp.watch('app/**/*.html', ['octicons'])
 })
 
 gulp.task('size', () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}))
+})
+
+gulp.task('octicons', () => {
+  gulp.src('app/*.html')
+    .pipe($.octicons())
+    .pipe(gulp.dest('app'))
 })
 
 gulp.task('wiredep', () => {
