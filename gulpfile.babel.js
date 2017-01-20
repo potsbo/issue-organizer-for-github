@@ -123,7 +123,7 @@ gulp.task('size', () => {
 })
 
 gulp.task('octicons', () => {
-  gulp.src('app/*.html')
+  gulp.src('app/**/*.html')
     .pipe($.octicons())
     .pipe(gulp.dest('app'))
 })
