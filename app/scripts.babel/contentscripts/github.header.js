@@ -17,7 +17,9 @@ window.addEventListener('load', () => {
   const contextButton = document.createElement('li')
   contextButton.setAttribute('context-button', '')
   contextButton.setAttribute('class', 'header-nav-item dropdown js-menu-container')
-  document.querySelector('#user-links').appendChild(contextButton)
+
+  const links = document.querySelector('#user-links')
+  links.insertBefore(contextButton, links.firstChild)
 
   angular.bootstrap(html, ['GitHubIssueOrganizer'], [])
 })
