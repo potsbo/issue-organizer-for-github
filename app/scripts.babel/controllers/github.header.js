@@ -18,7 +18,6 @@ app.controller('GitHubHeaderController', ($scope) => {
 app.directive('contextButton', [ '$sce', ($sce) => {
   return {
     restrict: 'EA',
-    replace: true,
     templateUrl: $sce.trustAsResourceUrl(chrome.extension.getURL('templates/github.header/button.html'))
   }
 }])
