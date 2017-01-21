@@ -1,15 +1,30 @@
-const app = angular.module('GitHubIssueOrganizer', [])
+const app = angular.module('GitHubIssueOrganizerPopup', [])
 app.controller('PopupController', ($scope) => {
-  console.log('loaded')
-  $scope.master = {}
 
-  $scope.update = (user) => {
-    $scope.master = angular.copy(user)
+  const defaults = {
+    master: [],
+    context: {
+      orgs: [{}]
+    }
+  }
+
+  $scope.orgOptions = {
+    available: [
+      { id: 'or', name: 'or'},
+      { id: 'minus', name: 'excluding'},
+    ],
+  }
+
+  $scope.save = (context) => {
+    $scope.master.push(angular.copy(context))
+    $scope.reset()
   }
 
   $scope.reset = () => {
-    $scope.user = angular.copy($scope.master)
+    $scope.context = angular.copy(defaults.context)
   }
 
   $scope.reset()
+
+  $scope.master = defaults.master
 })
